@@ -28,14 +28,12 @@ export class AlertService {
     }
 
     success(message: String, displayAfterRouting = false ) {
-        debugger;
         this.displayAfterRouting = displayAfterRouting;
         this.subject.next({ type:'success', text:message});
         
     }
 
     error(message: String, displayAfterRouting = false) {
-        debugger;
         this.displayAfterRouting = displayAfterRouting;
         this.subject.next({ type:'error', text:message});
         

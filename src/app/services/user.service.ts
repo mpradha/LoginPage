@@ -6,6 +6,7 @@ import { AlertService } from '../alert/alert.service';
 
 export class UserService{
     users = new Map();
+    currentUser;
     
     constructor(
         private router: Router,
@@ -20,6 +21,7 @@ export class UserService{
         else {
             if(this.users.has(username)) {
                 if((this.users.get(username).password === password)) {
+                    this.currentUser = this.users.get(username);
                     this.router.navigate(['/dashboard']);
                 }
                 else {
@@ -31,6 +33,12 @@ export class UserService{
                 this.alertService.error("The user does not exists.", false);
                 return;
             }
+        }
+    }
+
+    getCurrentUser() {
+        if(this.currentUser) {
+            return this.currentUser;
         }
     }
 
